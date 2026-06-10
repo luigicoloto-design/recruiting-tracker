@@ -1,1 +1,207 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recruiting Tracker — NPO / Critical Service</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F0F4F8; color: #1A202C; }
+  .header { background: linear-gradient(135deg, #0F2044 0%, #1A3A6B 60%, #1E4DB7 100%); padding: 24px 32px 0; color: #fff; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .header-eyebrow { font-size: 11px; letter-spacing: 2px; color: #90CAF9; font-weight: 600; margin-bottom: 4px; }
+  .header-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+  .header-sub { font-size: 12px; color: #90CAF9; margin-top: 4px; display: flex; align-items: center; gap: 10px; }
+  .btn-reload { background: rgba(255,255,255,0.15); border: none; color: #fff; border-radius: 6px; padding: 3px 12px; cursor: pointer; font-size: 11px; font-weight: 600; }
+  .recruiter-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .recruiter-tag { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 6px 12px; font-size: 12px; color: #E3F2FD; font-weight: 500; }
+  .kpi-strip { display: flex; gap: 2px; flex-wrap: wrap; }
+  .kpi-card { flex: 1 1 80px; background: rgba(255,255,255,0.07); border-top: 3px solid var(--color); padding: 12px 14px; border-radius: 8px 8px 0 0; }
+  .kpi-value { font-size: 26px; font-weight: 800; color: #fff; line-height: 1; }
+  .kpi-label { font-size: 10px; color: #90CAF9; margin-top: 2px; font-weight: 600; letter-spacing: 0.5px; }
+  .kpi-sub { font-size: 9px; color: #64B5F6; }
+  .tabs { display: flex; gap: 4px; margin-top: 12px; }
+  .tab { background: transparent; border: none; color: #90CAF9; padding: 8px 20px; border-radius: 6px 6px 0 0; cursor: pointer; font-size: 13px; font-weight: 500; }
+  .tab.active { background: #fff; color: #1A3A6B; font-weight: 700; }
+  .content { padding: 24px 32px; }
+  .filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .filter-btn { border: 1.5px solid #E2E8F0; background: #fff; color: #64748B; padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 500; }
+  .filter-btn.active { font-weight: 700; }
+  .vacancy-list { display: flex; flex-direction: column; gap: 8px; }
+  .vacancy-card { background: #fff; border-radius: 10px; border: 1.5px solid #E2E8F0; padding: 14px 18px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: box-shadow 0.15s; }
+  .vacancy-card:hover { box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+  .vacancy-card.open { box-shadow: 0 0 0 3px rgba(30,77,183,0.15); }
+  .card-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .card-id { width: 36px; height: 36px; border-radius: 8px; background: #0F2044; color: #90CAF9; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+  .card-body { flex: 1; min-width: 0; }
+  .card-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .card-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .card-note { margin-top: 14px; padding-top: 14px; border-top: 1px solid #F1F5F9; font-size: 13px; color: #475569; }
+  .status-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; white-space: nowrap; }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .rec-tag { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .meta-text { font-size: 11px; color: #94A3B8; }
+  .event-table { background: #fff; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden; }
+  .event-header { padding: 16px 20px; border-bottom: 1px solid #F1F5F9; background: #FAFBFC; font-weight: 700; font-size: 14px; }
+  .event-row { display: flex; align-items: flex-start; gap: 16px; padding: 12px 20px; border-bottom: 1px solid #F8FAFC; }
+  .event-row:nth-child(even) { background: #FAFBFF; }
+  .event-date { min-width: 90px; font-size: 11px; font-weight: 700; color: #1E4DB7; background: #EEF2FF; border-radius: 6px; padding: 3px 8px; text-align: center; flex-shrink: 0; }
+  .event-id { width: 36px; font-size: 10px; font-weight: 800; color: #90CAF9; background: #0F2044; border-radius: 6px; padding: 3px 6px; text-align: center; flex-shrink: 0; }
+  .event-body { flex: 1; }
+  .event-title { font-size: 13px; font-weight: 600; }
+  .event-sub { font-size: 11px; color: #94A3B8; margin-top: 2px; }
+  .recruiter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .rec-card { background: #fff; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden; }
+  .rec-card-header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .rec-card-name { font-size: 16px; font-weight: 800; color: #fff; }
+  .rec-card-role { font-size: 10px; color: rgba(255,255,255,0.7); letter-spacing: 1px; font-weight: 600; }
+  .rec-card-count { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: #fff; }
+  .rec-status-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 20px; border-bottom: 1px solid #F8FAFC; }
+  .rec-vacancy-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid #F1F5F9; }
+  .rec-vacancy-id { font-size: 10px; font-weight: 800; width: 28px; }
+  .rec-vacancy-title { font-size: 12px; color: #374151; flex: 1; }
+  .rec-footer { padding: 12px 20px; background: #FAFBFC; }
+  .rec-footer-label { font-size: 11px; color: #94A3B8; font-weight: 600; margin-bottom: 8px; }
+  .spinner-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px; gap: 16px; }
+  .spinner { width: 36px; height: 36px; border: 3px solid #E2E8F0; border-top: 3px solid #1E4DB7; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner-text { color: #94A3B8; font-size: 13px; }
+  .error-box { background: #FFEBEE; border: 1px solid #FFCDD2; border-radius: 10px; padding: 20px; color: #B71C1C; }
+  .btn-retry { background: #B71C1C; color: #fff; border: none; border-radius: 6px; padding: 8px 16px; cursor: pointer; margin-top: 12px; }
+  .footer { margin-top: 20px; font-size: 11px; color: #94A3B8; text-align: right; }
+  @media (max-width: 600px) { .header, .content { padding-left: 16px; padding-right: 16px; } .card-title { font-size: 13px; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-eyebrow">NPO / CRITICAL SERVICE</div>
+      <div class="header-title">Recruiting Tracker</div>
+      <div class="header-sub">
+        <span id="lastUpdate">Caricamento...</span>
+        <button class="btn-reload" onclick="fetchData()">↻ Ricarica</button>
+      </div>
+    </div>
+    <div class="recruiter-tags">
+      <div class="recruiter-tag">Andrea Limata</div>
+      <div class="recruiter-tag">Giuseppina Monda</div>
+    </div>
+  </div>
+  <div class="kpi-strip" id="kpiStrip"></div>
+  <div class="tabs">
+    <button class="tab active" onclick="setTab('tracker')">Vacancy Master</button>
+    <button class="tab" onclick="setTab('log')">Event Log</button>
+    <button class="tab" onclick="setTab('carico')">Carico Recruiter</button>
+  </div>
+</div>
+<div class="content">
+  <div id="spinner" class="spinner-wrap"><div class="spinner"></div><div class="spinner-text">Caricamento dati...</div></div>
+  <div id="errorBox" class="error-box" style="display:none"><strong>Errore caricamento dati:</strong> <span id="errorMsg"></span><br><button class="btn-retry" onclick="fetchData()">Riprova</button></div>
+  <div id="mainContent" style="display:none">
+    <div id="tabTracker"><div class="filters" id="filters"></div><div class="vacancy-list" id="vacancyList"></div></div>
+    <div id="tabLog" style="display:none"><div class="event-table"><div class="event-header" id="eventHeader"></div><div id="eventList"></div></div></div>
+    <div id="tabCarico" style="display:none"><div class="recruiter-grid" id="recruiterGrid"></div></div>
+  </div>
+  <div class="footer">Dati in tempo reale da Google Sheets · Clicca ↻ per aggiornare</div>
+</div>
+<script>
+const VACANCY_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMPROc1KQgP5roBemotc8BRT07oIxA0FN54QQ8O2iX7m_SyxAuSh5uwvMuGgj_IMcoAEHfFJdCOKGZ/pub?gid=0&single=true&output=csv";
+const EVENTS_CSV  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMPROc1KQgP5roBemotc8BRT07oIxA0FN54QQ8O2iX7m_SyxAuSh5uwvMuGgj_IMcoAEHfFJdCOKGZ/pub?gid=1625792572&single=true&output=csv";
+const STATUS_CONFIG = {
+  "CHIUSA":          {bg:"#E8F5E9",text:"#2E7D32",dot:"#43A047",label:"Chiusa"},
+  "CONVERTED":       {bg:"#E8F5E9",text:"#2E7D32",dot:"#66BB6A",label:"Convertita"},
+  "IN CORSO":        {bg:"#FFF8E1",text:"#F57F17",dot:"#FFB300",label:"In Corso"},
+  "ACTIVE SOURCING": {bg:"#FFF3E0",text:"#E65100",dot:"#FB8C00",label:"Active Sourcing"},
+  "APERTA":          {bg:"#E3F2FD",text:"#1565C0",dot:"#1E88E5",label:"Aperta"},
+  "BLOCKED":         {bg:"#FFEBEE",text:"#B71C1C",dot:"#E53935",label:"Bloccata"},
+};
+const RECRUITER_COLORS = {"Andrea Limata":"#1A3A6B","Giuseppina Monda":"#6A1B9A","Andrea / Giuseppina":"#00695C"};
+let vacancies=[], events=[], activeTab="tracker", activeFilter="TUTTI", openCard=null;
+function parseCSV(text) {
+  const lines=text.trim().split("\n");
+  const headers=lines[0].split(",").map(h=>h.trim().replace(/^"|"$/g,""));
+  return lines.slice(1).map(line=>{
+    const values=[]; let cur="", inQ=false;
+    for(let i=0;i<line.length;i++){
+      if(line[i]==='"'){inQ=!inQ;}
+      else if(line[i]===',' && !inQ){values.push(cur.trim());cur="";}
+      else{cur+=line[i];}
+    }
+    values.push(cur.trim());
+    const obj={};
+    headers.forEach((h,i)=>{obj[h]=(values[i]||"").replace(/^"|"$/g,"");});
+    return obj;
+  }).filter(r=>r[headers[0]]);
+}
+async function fetchData() {
+  document.getElementById("spinner").style.display="flex";
+  document.getElementById("errorBox").style.display="none";
+  document.getElementById("mainContent").style.display="none";
+  document.getElementById("lastUpdate").textContent="Caricamento...";
+  try {
+    const [vRes,eRes]=await Promise.all([fetch(VACANCY_CSV),fetch(EVENTS_CSV)]);
+    if(!vRes.ok) throw new Error("Errore nel caricamento Vacancy");
+    vacancies=parseCSV(await vRes.text());
+    events=eRes.ok?parseCSV(await eRes.text()):[];
+    document.getElementById("lastUpdate").textContent=`Aggiornato alle ${new Date().toLocaleTimeString("it-IT")}`;
+    renderAll();
+    document.getElementById("spinner").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+  } catch(e) {
+    document.getElementById("spinner").style.display="none";
+    document.getElementById("errorMsg").textContent=e.message;
+    document.getElementById("errorBox").style.display="block";
+  }
+}
+function renderAll(){renderKPI();renderFilters();renderVacancies();renderEvents();renderRecruiter();}
+function renderKPI(){
+  const total=vacancies.length, active=vacancies.filter(v=>["APERTA","IN CORSO","ACTIVE SOURCING"].includes(v.Stato)).length;
+  const closed=vacancies.filter(v=>["CHIUSA","CONVERTED"].includes(v.Stato)).length, blocked=vacancies.filter(v=>v.Stato==="BLOCKED").length;
+  document.getElementById("kpiStrip").innerHTML=[
+    {label:"Vacancy Monitorate",value:total,color:"#1565C0",sub:"totali"},
+    {label:"Posizioni Aperte",value:active,color:"#E65100",sub:"attive"},
+    {label:"Chiuse / Conv.",value:closed,color:"#2E7D32",sub:"completate"},
+    {label:"Bloccate",value:blocked,color:"#B71C1C",sub:"in attesa"},
+  ].map(k=>`<div class="kpi-card" style="--color:${k.color}"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div><div class="kpi-sub">${k.sub}</div></div>`).join("");
+}
+function statusBadge(s){const c=STATUS_CONFIG[s]||{bg:"#F5F5F5",text:"#555",dot:"#999",label:s};return `<span class="status-badge" style="background:${c.bg};color:${c.text}"><span class="status-dot" style="background:${c.dot}"></span>${c.label}</span>`;}
+function recruiterTag(name){const color=RECRUITER_COLORS[name]||"#546E7A";return `<span class="rec-tag" style="background:${color}18;color:${color};border:1px solid ${color}40">${name}</span>`;}
+function renderFilters(){
+  document.getElementById("filters").innerHTML=["TUTTI",...Object.keys(STATUS_CONFIG)].map(s=>{
+    const cfg=STATUS_CONFIG[s], count=s==="TUTTI"?vacancies.length:vacancies.filter(v=>v.Stato===s).length;
+    if(s!=="TUTTI"&&count===0) return "";
+    const isActive=activeFilter===s;
+    return `<button class="filter-btn ${isActive?'active':''}" style="background:${isActive?(cfg?cfg.bg:"#E3E8EF"):"#fff"};color:${isActive?(cfg?cfg.text:"#1A202C"):"#64748B"};border-color:${isActive?(cfg?cfg.dot:"#CBD5E0"):"#E2E8F0"}" onclick="setFilter('${s}')">${s==="TUTTI"?`Tutti (${count})`:`${cfg?.label||s} (${count})`}</button>`;
+  }).join("");
+}
+function renderVacancies(){
+  document.getElementById("vacancyList").innerHTML=(activeFilter==="TUTTI"?vacancies:vacancies.filter(v=>v.Stato===activeFilter)).map(v=>{
+    const isOpen=openCard===v.ID, cfg=STATUS_CONFIG[v.Stato]||{};
+    return `<div class="vacancy-card ${isOpen?'open':''}" style="${isOpen?`border-color:${cfg.dot||'#CBD5E0'};box-shadow:0 0 0 3px ${(cfg.dot||'#000')}22`:''}" onclick="toggleCard('${v.ID}')">
+      <div class="card-row"><div class="card-id">${v.ID}</div><div class="card-body"><div class="card-title">${v.Ricerca}</div><div class="card-meta">${recruiterTag(v.Recruiter)}<span class="meta-text">Ref: ${v.Referente}</span><span class="meta-text">Dal ${v.DataApertura}</span></div></div>${statusBadge(v.Stato)}</div>
+      ${isOpen&&v.Note?`<div class="card-note"><strong>Note:</strong> ${v.Note}</div>`:""}
+    </div>`;
+  }).join("");
+}
+function renderEvents(){
+  document.getElementById("eventHeader").textContent=`Timeline eventi — ${events.length} eventi registrati`;
+  document.getElementById("eventList").innerHTML=[...events].reverse().map((e,i)=>`<div class="event-row" style="${i%2===0?'background:#FAFBFF':''}"><div class="event-date">${e.Data}</div><div class="event-id">${e.IDRicerca}</div><div class="event-body"><div class="event-title">${e.Evento}</div><div class="event-sub">${e.Ricerca}</div></div></div>`).join("");
+}
+function renderRecruiter(){
+  document.getElementById("recruiterGrid").innerHTML=["Andrea Limata","Giuseppina Monda"].map(recruiter=>{
+    const mine=vacancies.filter(v=>v.Recruiter&&v.Recruiter.includes(recruiter.split(" ")[0]));
+    const color=RECRUITER_COLORS[recruiter]||"#546E7A";
+    const byStatus=Object.keys(STATUS_CONFIG).map(s=>({s,count:mine.filter(v=>v.Stato===s).length,cfg:STATUS_CONFIG[s]})).filter(x=>x.count>0);
+    return `<div class="rec-card"><div class="rec-card-header" style="background:${color}"><div><div class="rec-card-role">RECRUITER</div><div class="rec-card-name">${recruiter}</div></div><div class="rec-card-count">${mine.length}</div></div>
+      ${byStatus.map(({s,count})=>`<div class="rec-status-row">${statusBadge(s)}<strong style="font-size:15px">${count}</strong></div>`).join("")}
+      <div class="rec-footer"><div class="rec-footer-label">RICERCHE ATTIVE</div>${mine.filter(v=>!["CHIUSA","CONVERTED"].includes(v.Stato)).map(v=>`<div class="rec-vacancy-row"><span class="rec-vacancy-id" style="color:${color}">${v.ID}</span><span class="rec-vacancy-title">${v.Ricerca}</span>${statusBadge(v.Stato)}</div>`).join("")}</div></div>`;
+  }).join("");
+}
+function setTab(tab){activeTab=tab;document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));event.target.classList.add("active");document.getElementById("tabTracker").style.display=tab==="tracker"?"block":"none";document.getElementById("tabLog").style.display=tab==="log"?"block":"none";document.getElementById("tabCarico").style.display=tab==="carico"?"block":"none";}
+function setFilter(f){activeFilter=f;renderFilters();renderVacancies();}
+function toggleCard(id){openCard=openCard===id?null:id;renderVacancies();}
+fetchData();
+</script>
+</body>
+</html>
