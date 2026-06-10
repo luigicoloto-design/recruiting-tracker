@@ -125,31 +125,31 @@
         <div class="field-group"><label>ID Ricerca</label><select id="v_id"><option value="">Seleziona...</option></select></div>
         <div class="field-group"><label>Campo da modificare</label><select id="v_field"><option value="Stato">Stato</option><option value="Recruiter">Recruiter</option><option value="Referente">Referente</option><option value="Note">Note</option><option value="DataApertura">Data Apertura</option></select></div>
       </div>
-      <div class="field-group" style="margin-bottom:12px"><label>Nuovo valore</label><input type="text" id="v_value" placeholder="Es. IN CORSO" /></div>
+      <div class="field-group" style="margin-bottom:12px"><label>Nuovo valore</label><input type="text" id="v_value" placeholder="Es. IN CORSO"/></div>
       <button class="btn-submit" onclick="submitUpdate()">Aggiorna Sheet →</button>
     </div>
     <div id="formEvent" style="display:none">
       <div class="update-grid">
-        <div class="field-group"><label>Data</label><input type="text" id="e_data" placeholder="Es. 10/06/2026" /></div>
-        <div class="field-group"><label>ID Ricerca</label><input type="text" id="e_id" placeholder="Es. 011" /></div>
+        <div class="field-group"><label>Data</label><input type="text" id="e_data" placeholder="Es. 10/06/2026"/></div>
+        <div class="field-group"><label>ID Ricerca</label><input type="text" id="e_id" placeholder="Es. 011"/></div>
       </div>
-      <div class="field-group" style="margin-bottom:12px"><label>Ricerca</label><input type="text" id="e_ricerca" placeholder="Es. Sistemista VMware" /></div>
-      <div class="field-group" style="margin-bottom:12px"><label>Evento</label><input type="text" id="e_evento" placeholder="Es. Primo colloquio svolto" /></div>
+      <div class="field-group" style="margin-bottom:12px"><label>Ricerca</label><input type="text" id="e_ricerca" placeholder="Es. Sistemista VMware"/></div>
+      <div class="field-group" style="margin-bottom:12px"><label>Evento</label><input type="text" id="e_evento" placeholder="Es. Primo colloquio svolto"/></div>
       <button class="btn-submit" onclick="submitEvent()">Aggiungi Evento →</button>
     </div>
     <div id="formNew" style="display:none">
       <div class="update-grid">
-        <div class="field-group"><label>ID</label><input type="text" id="n_id" placeholder="Es. 012" /></div>
-        <div class="field-group"><label>Data Apertura</label><input type="text" id="n_data" placeholder="Es. 10/06/2026" /></div>
+        <div class="field-group"><label>ID</label><input type="text" id="n_id" placeholder="Es. 012"/></div>
+        <div class="field-group"><label>Data Apertura</label><input type="text" id="n_data" placeholder="Es. 10/06/2026"/></div>
       </div>
-      <div class="field-group" style="margin-bottom:12px"><label>Ricerca</label><input type="text" id="n_ricerca" placeholder="Titolo della posizione" /></div>
+      <div class="field-group" style="margin-bottom:12px"><label>Ricerca</label><input type="text" id="n_ricerca" placeholder="Titolo della posizione"/></div>
       <div class="update-grid">
-        <div class="field-group"><label>Referente</label><input type="text" id="n_referente" placeholder="Es. Mario Rossi" /></div>
+        <div class="field-group"><label>Referente</label><input type="text" id="n_referente" placeholder="Es. Mario Rossi"/></div>
         <div class="field-group"><label>Recruiter</label><select id="n_recruiter"><option>Andrea Limata</option><option>Giuseppina Monda</option><option>Andrea / Giuseppina</option></select></div>
       </div>
       <div class="update-grid">
         <div class="field-group"><label>Stato</label><select id="n_stato"><option>APERTA</option><option>IN CORSO</option><option>ACTIVE SOURCING</option><option>BLOCKED</option><option>CHIUSA</option><option>CONVERTED</option></select></div>
-        <div class="field-group"><label>Note</label><input type="text" id="n_note" placeholder="Note opzionali" /></div>
+        <div class="field-group"><label>Note</label><input type="text" id="n_note" placeholder="Note opzionali"/></div>
       </div>
       <button class="btn-submit" onclick="submitNew()">Aggiungi Vacancy →</button>
     </div>
@@ -174,10 +174,10 @@ let vacancies=[],events=[],activeFilter="TUTTI",openCard=null;
 function parseCSV(text){const lines=text.trim().split("\n");const headers=lines[0].split(",").map(h=>h.trim().replace(/^"|"$/g,""));return lines.slice(1).map(line=>{const values=[];let cur="",inQ=false;for(let i=0;i<line.length;i++){if(line[i]==='"'){inQ=!inQ;}else if(line[i]===',' &&!inQ){values.push(cur.trim());cur="";}else{cur+=line[i];}}values.push(cur.trim());const obj={};headers.forEach((h,i)=>{obj[h]=(values[i]||"").replace(/^"|"$/g,"");});return obj;}).filter(r=>r[headers[0]]);}
 async function fetchData(){document.getElementById("spinner").style.display="flex";document.getElementById("errorBox").style.display="none";document.getElementById("mainContent").style.display="none";document.getElementById("lastUpdate").textContent="Caricamento...";try{const[vRes,eRes]=await Promise.all([fetch(VACANCY_CSV),fetch(EVENTS_CSV)]);if(!vRes.ok)throw new Error("Errore caricamento Vacancy");vacancies=parseCSV(await vRes.text());events=eRes.ok?parseCSV(await eRes.text()):[];document.getElementById("lastUpdate").textContent=`Aggiornato alle ${new Date().toLocaleTimeString("it-IT")}`;populateVacancySelect();renderAll();document.getElementById("spinner").style.display="none";document.getElementById("mainContent").style.display="block";}catch(e){document.getElementById("spinner").style.display="none";document.getElementById("errorMsg").textContent=e.message;document.getElementById("errorBox").style.display="block";}}
 function populateVacancySelect(){const sel=document.getElementById("v_id");sel.innerHTML='<option value="">Seleziona...</option>';vacancies.forEach(v=>{sel.innerHTML+=`<option value="${v.ID}">${v.ID} — ${v.Ricerca}</option>`;});}
-async function callScript(payload){const res=await fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify(payload),headers:{"Content-Type":"application/json"}});return res.json();}
-async function submitUpdate(){const id=document.getElementById("v_id").value;const field=document.getElementById("v_field").value;const value=document.getElementById("v_value").value.trim();if(!id||!value){showToast("Compila tutti i campi","error");return;}showToast("Aggiornamento in corso...","");try{await callScript({action:"update_vacancy",id,field,value});showToast("✓ Sheet aggiornato!","success");setTimeout(()=>fetchData(),2000);}catch(e){showToast("Errore: "+e.message,"error");}}
-async function submitEvent(){const data={action:"add_event",Data:document.getElementById("e_data").value.trim(),IDRicerca:document.getElementById("e_id").value.trim(),Ricerca:document.getElementById("e_ricerca").value.trim(),Evento:document.getElementById("e_evento").value.trim()};if(!data.Data||!data.IDRicerca||!data.Evento){showToast("Compila tutti i campi","error");return;}showToast("Aggiunta evento...","");try{await callScript(data);showToast("✓ Evento aggiunto!","success");document.getElementById("e_data").value="";document.getElementById("e_id").value="";document.getElementById("e_ricerca").value="";document.getElementById("e_evento").value="";setTimeout(()=>fetchData(),2000);}catch(e){showToast("Errore: "+e.message,"error");}}
-async function submitNew(){const data={action:"add_vacancy",ID:document.getElementById("n_id").value.trim(),Ricerca:document.getElementById("n_ricerca").value.trim(),DataApertura:document.getElementById("n_data").value.trim(),Referente:document.getElementById("n_referente").value.trim(),Recruiter:document.getElementById("n_recruiter").value,Stato:document.getElementById("n_stato").value,Note:document.getElementById("n_note").value.trim()};if(!data.ID||!data.Ricerca){showToast("ID e Ricerca sono obbligatori","error");return;}showToast("Aggiunta vacancy...","");try{await callScript(data);showToast("✓ Vacancy aggiunta!","success");setTimeout(()=>fetchData(),2000);}catch(e){showToast("Errore: "+e.message,"error");}}
+async function callScript(payload){await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",body:JSON.stringify(payload),headers:{"Content-Type":"text/plain"}});return{status:"ok"};}
+async function submitUpdate(){const id=document.getElementById("v_id").value;const field=document.getElementById("v_field").value;const value=document.getElementById("v_value").value.trim();if(!id||!value){showToast("Compila tutti i campi","error");return;}showToast("Aggiornamento in corso...","");try{await callScript({action:"update_vacancy",id,field,value});showToast("✓ Sheet aggiornato!","success");setTimeout(()=>fetchData(),3000);}catch(e){showToast("Errore: "+e.message,"error");}}
+async function submitEvent(){const data={action:"add_event",Data:document.getElementById("e_data").value.trim(),IDRicerca:document.getElementById("e_id").value.trim(),Ricerca:document.getElementById("e_ricerca").value.trim(),Evento:document.getElementById("e_evento").value.trim()};if(!data.Data||!data.IDRicerca||!data.Evento){showToast("Compila tutti i campi","error");return;}showToast("Aggiunta evento...","");try{await callScript(data);showToast("✓ Evento aggiunto!","success");document.getElementById("e_data").value="";document.getElementById("e_id").value="";document.getElementById("e_ricerca").value="";document.getElementById("e_evento").value="";setTimeout(()=>fetchData(),3000);}catch(e){showToast("Errore: "+e.message,"error");}}
+async function submitNew(){const data={action:"add_vacancy",ID:document.getElementById("n_id").value.trim(),Ricerca:document.getElementById("n_ricerca").value.trim(),DataApertura:document.getElementById("n_data").value.trim(),Referente:document.getElementById("n_referente").value.trim(),Recruiter:document.getElementById("n_recruiter").value,Stato:document.getElementById("n_stato").value,Note:document.getElementById("n_note").value.trim()};if(!data.ID||!data.Ricerca){showToast("ID e Ricerca sono obbligatori","error");return;}showToast("Aggiunta vacancy...","");try{await callScript(data);showToast("✓ Vacancy aggiunta!","success");setTimeout(()=>fetchData(),3000);}catch(e){showToast("Errore: "+e.message,"error");}}
 function showToast(msg,type){const t=document.getElementById("toast");t.textContent=msg;t.className=`toast show ${type}`;if(type!=="")setTimeout(()=>t.className="toast",3000);}
 function toggleUpdatePanel(){const p=document.getElementById("updatePanel");p.style.display=p.style.display==="none"?"block":"none";}
 function setUpdateTab(tab,el){document.querySelectorAll(".update-tab").forEach(t=>t.classList.remove("active"));el.classList.add("active");document.getElementById("formVacancy").style.display=tab==="vacancy"?"block":"none";document.getElementById("formEvent").style.display=tab==="event"?"block":"none";document.getElementById("formNew").style.display=tab==="new"?"block":"none";}
