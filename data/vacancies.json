@@ -1,0 +1,16 @@
+﻿{
+  "updated": "2026-06-11T00:00:00Z",
+  "vacancies": [
+    { "id": "001", "title": "4 Junior SOC NOC Analyst H24", "opened": "2026-04-07", "contact": "Ricotti / Pargalia", "recruiter": "Andrea Limata", "status": "CHIUSA" },
+    { "id": "002", "title": "SQL Server Administrator Senior", "opened": "2026-05-18", "contact": "Genovese / Marcaccini", "recruiter": "Andrea Limata", "status": "CHIUSA" },
+    { "id": "003", "title": "Addetto/a Tesoreria", "opened": "2026-05-04", "contact": "Caperdoni", "recruiter": "Andrea Limata", "status": "IN CORSO" },
+    { "id": "004", "title": "Senior Network Security Engineer", "opened": "2026-05-01", "contact": "Poet / Pargalia", "recruiter": "Andrea Limata", "status": "ACTIVE SOURCING" },
+    { "id": "005", "title": "Tirocinanti NOC H24 (3 pos.)", "opened": "2026-05-01", "contact": "Poet / Pargalia", "recruiter": "Andrea/Giuseppina", "status": "IN CORSO" },
+    { "id": "006", "title": "Cloud DevOps Engineer", "opened": "2026-05-31", "contact": "Villani", "recruiter": "Andrea Limata", "status": "BLOCKED" },
+    { "id": "007", "title": "Sistemista Categorie Protette", "opened": "2026-05-19", "contact": "Luciana Nadejde", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato trovato, feedback positivo Pargalia. Aggiornamento atteso 11/06 mattina" },
+    { "id": "008", "title": "Junior IT Service Desk H24", "opened": "2026-06-05", "contact": "Francesco Mastroieni", "recruiter": "Giuseppina Monda", "status": "ACTIVE SOURCING" },
+    { "id": "009", "title": "Addetto/a Contabilità/Amm.", "opened": "2026-06-05", "contact": "Veronica Vinassa", "recruiter": "Giuseppina Monda", "status": "APERTA" },
+    { "id": "010", "title": "H24 Reale Mutua (Voccola)", "opened": "2026-05-26", "contact": "Luciano Voccola", "recruiter": "Giuseppina Monda", "status": "CONVERTED" },
+    { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA" }
+  ]
+}
