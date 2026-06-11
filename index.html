@@ -124,7 +124,7 @@
 </div>
 <div id="toast" class="toast"></div>
 <script>
-const DATA_JSON="https://raw.githubusercontent.com/luigicoloto-design/recruiting-tracker/main/data/vacancies.json";
+const DATA_JSON="https://raw.githubusercontent.com/luigicoloto-design/recruiting-tracker/main/data/vacancies.json?t=" + Date.now();
 const STATUS_CONFIG={"CHIUSA":{bg:"#E8F5E9",text:"#2E7D32",dot:"#43A047",label:"Chiusa"},"CONVERTED":{bg:"#E8F5E9",text:"#2E7D32",dot:"#66BB6A",label:"Convertita"},"IN CORSO":{bg:"#FFF8E1",text:"#F57F17",dot:"#FFB300",label:"In Corso"},"ACTIVE SOURCING":{bg:"#FFF3E0",text:"#E65100",dot:"#FB8C00",label:"Active Sourcing"},"APERTA":{bg:"#E3F2FD",text:"#1565C0",dot:"#1E88E5",label:"Aperta"},"BLOCKED":{bg:"#FFEBEE",text:"#B71C1C",dot:"#E53935",label:"Bloccata"}};
 const RECRUITER_COLORS={"Andrea Limata":"#1A3A6B","Giuseppina Monda":"#6A1B9A","Andrea / Giuseppina":"#00695C","Andrea/Giuseppina":"#00695C"};
 let vacancies=[],events=[],activeFilter="TUTTI",openCard=null;
