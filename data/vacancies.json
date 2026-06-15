@@ -8,7 +8,7 @@
     { "id": "005", "title": "Tirocinanti NOC H24 (3 pos.)", "opened": "2026-05-01", "contact": "Poet / Pargalia", "recruiter": "Andrea/Giuseppina", "status": "IN CORSO" },
     { "id": "006", "title": "Cloud DevOps Engineer", "opened": "2026-05-31", "contact": "Villani", "recruiter": "Andrea Limata", "status": "BLOCKED" },
     { "id": "007", "title": "Sistemista Categorie Protette", "opened": "2026-05-19", "contact": "Luciana Nadejde", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato trovato, feedback positivo Pargalia. Aggiornamento atteso 11/06 mattina" },
-    { "id": "008", "title": "Junior IT Service Desk H24", "opened": "2026-06-05", "contact": "Francesco Mastroieni", "recruiter": "Giuseppina Monda", "status": "ACTIVE SOURCING" },
+    { "id": "008", "title": "Junior IT Service Desk H24 (2 posizioni)", "opened": "2026-06-05", "contact": "Francesco Mastroieni", "recruiter": "Giuseppina Monda", "status": "ACTIVE SOURCING", "notes": "Fabbisogno aumentato a 2: 1 per Botter→Reale Mutua, 1 per dimissioni Politanò. RAL: 23-25K" },
     { "id": "009", "title": "Addetto/a Contabilità/Amm.", "opened": "2026-06-05", "contact": "Veronica Vinassa", "recruiter": "Giuseppina Monda", "status": "APERTA" },
     { "id": "010", "title": "H24 Reale Mutua (Voccola)", "opened": "2026-05-26", "contact": "Luciano Voccola", "recruiter": "Giuseppina Monda", "status": "CONVERTED" },
     { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA" }
@@ -25,6 +25,7 @@
     { "Data": "05/06/2026", "IDRicerca": "002", "Ricerca": "SQL Server Administrator Senior", "Evento": "Chiusura recruiting" },
     { "Data": "09/06/2026", "IDRicerca": "005", "Ricerca": "Tirocinanti NOC H24 (3 pos.)", "Evento": "Avvio 2 tirocini" },
     { "Data": "10/06/2026", "IDRicerca": "011", "Ricerca": "Sistemista VMware/Linux/Windows", "Evento": "Apertura ricerca" },
-    { "Data": "10/06/2026", "IDRicerca": "007", "Ricerca": "Sistemista Categorie Protette", "Evento": "Candidato trovato — feedback positivo Pargalia. Giuseppina in ospedale" }
+    { "Data": "10/06/2026", "IDRicerca": "007", "Ricerca": "Sistemista Categorie Protette", "Evento": "Candidato trovato — feedback positivo Pargalia. Giuseppina in ospedale" },
+    { "Data": "15/06/2026", "IDRicerca": "008", "Ricerca": "Junior IT Service Desk H24", "Evento": "Dimissioni Politanò — fabbisogno sale a 2 risorse" }
   ]
 }
