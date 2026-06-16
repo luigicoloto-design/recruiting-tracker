@@ -7,7 +7,7 @@
     { "id": "004", "title": "Senior Network Security Engineer", "opened": "2026-05-01", "contact": "Poet / Pargalia", "recruiter": "Andrea Limata", "status": "IN CORSO", "notes": "Candidato: Daniele Ferla (segnalato da Angelo Lauria). Disponibile a ridurre RAL. Inglese appena sufficiente. Preavviso 2 mesi (negoziabile). CV inviato a Poet e Pargalia il 15/06/2026." },
     { "id": "005", "title": "Tirocinanti NOC H24 (3 pos.)", "opened": "2026-05-01", "contact": "Poet / Pargalia", "recruiter": "Andrea/Giuseppina", "status": "IN CORSO" },
     { "id": "006", "title": "Cloud DevOps Engineer", "opened": "2026-05-31", "contact": "Villani", "recruiter": "Andrea Limata", "status": "BLOCKED" },
-    { "id": "007", "title": "Sistemista Categorie Protette", "opened": "2026-05-19", "contact": "Luciana Nadejde", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato trovato, feedback positivo Pargalia. Aggiornamento atteso 11/06 mattina" },
+    { "id": "007", "title": "Sistemista Categorie Protette", "opened": "2026-05-19", "contact": "Luciana Nadejde", "recruiter": "Giuseppina Monda", "status": "COLLOQUIO TECNICO", "notes": "Candidato selezionato da Giuseppina (16/06). In attesa di fissare colloquio tecnico — Giuseppina chiede chi è il referente tecnico in NPO. Esigenza burocratica (scopertura cat. protette blocca tirocini Regione Piemonte), seniority non vincolante." },
     { "id": "008", "title": "Junior IT Service Desk H24 (2 posizioni)", "opened": "2026-06-05", "contact": "Francesco Mastroieni", "recruiter": "Giuseppina Monda", "status": "ACTIVE SOURCING", "notes": "Fabbisogno aumentato a 2: 1 per Botter→Reale Mutua, 1 per dimissioni Politanò. RAL: 23-25K" },
     { "id": "009", "title": "Addetto/a Contabilità/Amm.", "opened": "2026-06-05", "contact": "Veronica Vinassa", "recruiter": "Giuseppina Monda", "status": "APERTA" },
     { "id": "010", "title": "H24 Reale Mutua (Voccola)", "opened": "2026-05-26", "contact": "Luciano Voccola", "recruiter": "Giuseppina Monda", "status": "CONVERTED" },
@@ -27,6 +27,7 @@
     { "Data": "10/06/2026", "IDRicerca": "011", "Ricerca": "Sistemista VMware/Linux/Windows", "Evento": "Apertura ricerca" },
     { "Data": "10/06/2026", "IDRicerca": "007", "Ricerca": "Sistemista Categorie Protette", "Evento": "Candidato trovato — feedback positivo Pargalia. Giuseppina in ospedale" },
     { "Data": "15/06/2026", "IDRicerca": "008", "Ricerca": "Junior IT Service Desk H24", "Evento": "Dimissioni Politanò — fabbisogno sale a 2 risorse" },
-    { "Data": "15/06/2026", "IDRicerca": "004", "Ricerca": "Senior Network Security Engineer", "Evento": "CV inviato: Daniele Ferla — segnalato da Angelo Lauria. CV inviato a Poet/Pargalia per valutazione" }
+    { "Data": "15/06/2026", "IDRicerca": "004", "Ricerca": "Senior Network Security Engineer", "Evento": "CV inviato: Daniele Ferla — segnalato da Angelo Lauria. CV inviato a Poet/Pargalia per valutazione" },
+    { "Data": "16/06/2026", "IDRicerca": "007", "Ricerca": "Sistemista Categorie Protette", "Evento": "Candidato selezionato da Giuseppina. In attesa referente tecnico NPO per fissare colloquio tecnico" }
   ]
 }
