@@ -11,7 +11,8 @@
     { "id": "008", "title": "Junior IT Service Desk H24 (2 posizioni)", "opened": "2026-06-05", "contact": "Francesco Mastroieni", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "1/2 candidati trovati (17/06). Seconda figura identica ancora ricercata. RAL: 23-25K" },
     { "id": "009", "title": "Addetto/a Contabilità/Amm.", "opened": "2026-06-05", "contact": "Veronica Vinassa", "recruiter": "Giuseppina Monda", "status": "APERTA" },
     { "id": "010", "title": "H24 Reale Mutua (Voccola)", "opened": "2026-05-26", "contact": "Luciano Voccola", "recruiter": "Giuseppina Monda", "status": "CONVERTED" },
-    { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA" }
+    { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA" },
+    { "id": "012", "title": "Data Analyst", "opened": "2026-06-17", "contact": "Annalisa Mele", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato colloquiato da Giuseppina il 16/06. In attesa feedback." }
   ],
   "events": [
     { "Data": "07/04/2026", "IDRicerca": "001", "Ricerca": "4 Junior SOC NOC Analyst H24", "Evento": "Apertura ricerca" },
@@ -30,6 +31,7 @@
     { "Data": "15/06/2026", "IDRicerca": "004", "Ricerca": "Senior Network Security Engineer", "Evento": "CV inviato: Daniele Ferla — segnalato da Angelo Lauria. CV inviato a Poet/Pargalia per valutazione" },
     { "Data": "16/06/2026", "IDRicerca": "007", "Ricerca": "Sistemista Categorie Protette", "Evento": "Candidato selezionato da Giuseppina. In attesa referente tecnico NPO per fissare colloquio tecnico" },
     { "Data": "17/06/2026", "IDRicerca": "007", "Ricerca": "Sistemista Categorie Protette", "Evento": "Colloquio HR superato. Colloquio tecnico con Pargalia da fissare — se positivo posizione chiusa" },
+    { "Data": "17/06/2026", "IDRicerca": "012", "Ricerca": "Data Analyst", "Evento": "Apertura ricerca. Colloquio HR svolto da Giuseppina con candidato" },
     { "Data": "15/06/2026", "IDRicerca": "005", "Ricerca": "Tirocinanti NOC H24 (3 pos.)", "Evento": "1 candidato selezionato: superato colloquio HR (Giuseppina) + tecnico (Pargalia). Tirocinio in attivazione con CPI Piemonte. No turni fino a fine periodo valutazione." },
     { "Data": "16/06/2026", "IDRicerca": "005", "Ricerca": "Tirocinanti NOC H24 (3 pos.)", "Evento": "Claudia Pizzato (NPO): ok tirocinio, no turni fino a fine valutazione. Richiesto CV candidato a Giuseppina. Restano 2 posizioni aperte." },
     { "Data": "17/06/2026", "IDRicerca": "008", "Ricerca": "Junior IT Service Desk H24", "Evento": "Candidato trovato da Giuseppina Monda" }
