@@ -1,6 +1,6 @@
 ﻿{
-  "updated": "2026-06-18T14:45:00Z",
-  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e", "19ed989c78244730", "19ed9cd5da9a6094", "19eda564de18f06e", "19eda55751a10498", "19edac397dd87be8"],
+  "updated": "2026-06-18T16:00:00Z",
+  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e", "19ed989c78244730", "19ed9cd5da9a6094", "19eda564de18f06e", "19eda55751a10498", "19edac397dd87be8", "19edb266d2f7f016"],
   "vacancies": [
     { "id": "001", "title": "4 Junior SOC NOC Analyst H24", "opened": "2026-04-07", "contact": "Ricotti / Pargalia", "recruiter": "Andrea Limata", "status": "CHIUSA" },
     { "id": "002", "title": "SQL Server Administrator Senior", "opened": "2026-05-18", "contact": "Genovese / Marcaccini", "recruiter": "Andrea Limata", "status": "CHIUSA" },
@@ -12,7 +12,7 @@
     { "id": "008", "title": "Junior IT Service Desk H24 (2 posizioni)", "opened": "2026-06-05", "contact": "Francesco Mastroieni", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "1/2 candidati trovati (17/06). Seconda figura identica ancora ricercata. RAL: 23-25K" },
     { "id": "009", "title": "Addetto/a Contabilità/Amm.", "opened": "2026-06-05", "contact": "Veronica Vinassa", "recruiter": "Giuseppina Monda", "status": "APERTA" },
     { "id": "010", "title": "H24 Reale Mutua (Voccola)", "opened": "2026-05-26", "contact": "Luciano Voccola", "recruiter": "Giuseppina Monda", "status": "CONVERTED" },
-    { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA" },
+    { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA", "notes": "Ricerca per sostituzione di Valter Dal Bo (pensione imminente). Genovese (10/06): 'procedete con annuncio esterno; Claudia Pizzato e Veronica Vinassa faranno job posting interno in parallelo — coordinarsi con loro'. Andrea Limata (18/06) chiede a Luigi: dare priorità al job posting interno? Referente colloqui tecnici: Tascarella (da confermare)." },
     { "id": "012", "title": "Data Analyst", "opened": "2026-06-17", "contact": "Annalisa Mele", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato colloquiato da Giuseppina il 16/06. In attesa feedback." },
     { "id": "013", "title": "Cloud Engineer esperto in Dynatrace", "opened": "2026-06-18", "contact": "Daniele Genovese (NPO) / OverIT", "recruiter": "Andrea Limata", "status": "IN CORSO", "notes": "URGENTE. Cliente finale: OverIT (via Ricoh/Npo Sistemi). Remoto, 3-4 mesi, inizio entro giugno. Primo CV ricevuto da AGAP2 (18/06): 'Daniele', 6+ anni esperienza Dynatrace/observability, AWS/Azure/GCP, Kubernetes/OpenShift, Terraform. NPO (Genovese) propone Pastore come intervistatore tecnico — approvazione finale di Raffaele Chiatto. In attesa di organizzare colloquio tecnico." }
   ],
@@ -41,6 +41,7 @@
     { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "Andrea Limata contatta Agap2 (Damiano Bogni) con brief completo. In attesa proposta candidati." },
     { "Data": "18/06/2026", "IDRicerca": "006", "Ricerca": "Cloud DevOps Engineer", "Evento": "Candidata presentata da Andrea Limata a Giulio Villani (NPO): Martina Nanu — Technical Lead, AWS cert in corso, inglese buono, reperibilità ok. Villani risponde positivamente. In attesa feedback. Nota recruiter: difficoltà RAL per profili senior." },
     { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "AGAP2 presenta primo CV: 'Daniele', 6+ anni Dynatrace/observability. NPO (Genovese) propone Pastore come intervistatore tecnico, approvazione Raffaele Chiatto. Colloquio tecnico da organizzare." },
-    { "Data": "18/06/2026", "IDRicerca": "006", "Ricerca": "Cloud DevOps Engineer", "Evento": "Villani (NPO) conferma: 'Organizziamo pure un colloquio tecnico' per Martina Nanu. Coordinamento disponibilità in corso — 24/06 chiusura aziendale. Villani avvisa: prossimo alla paternità, possibile rinvio colloquio." }
+    { "Data": "18/06/2026", "IDRicerca": "006", "Ricerca": "Cloud DevOps Engineer", "Evento": "Villani (NPO) conferma: 'Organizziamo pure un colloquio tecnico' per Martina Nanu. Coordinamento disponibilità in corso — 24/06 chiusura aziendale. Villani avvisa: prossimo alla paternità, possibile rinvio colloquio." },
+    { "Data": "18/06/2026", "IDRicerca": "011", "Ricerca": "Sistemista VMware/Linux/Windows", "Evento": "Contesto ricerca: sostituzione Valter Dal Bo (pensione imminente). Doppio approccio: esterno (Andrea Limata) + interno (Claudia Pizzato/Veronica Vinassa). Andrea chiede a Luigi se dare priorità al job posting interno. Referente tecnico colloqui: Tascarella (da confermare)." }
   ]
 }
