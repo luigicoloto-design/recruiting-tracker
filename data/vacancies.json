@@ -1,20 +1,20 @@
 ﻿{
-  "updated": "2026-06-18T08:30:00Z",
-  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e", "19ed989c78244730", "19ed9cd5da9a6094"],
+  "updated": "2026-06-18T12:45:00Z",
+  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e", "19ed989c78244730", "19ed9cd5da9a6094", "19eda564de18f06e", "19eda55751a10498"],
   "vacancies": [
     { "id": "001", "title": "4 Junior SOC NOC Analyst H24", "opened": "2026-04-07", "contact": "Ricotti / Pargalia", "recruiter": "Andrea Limata", "status": "CHIUSA" },
     { "id": "002", "title": "SQL Server Administrator Senior", "opened": "2026-05-18", "contact": "Genovese / Marcaccini", "recruiter": "Andrea Limata", "status": "CHIUSA" },
     { "id": "003", "title": "Addetto/a Tesoreria", "opened": "2026-05-04", "contact": "Caperdoni", "recruiter": "Andrea Limata", "status": "IN CORSO" },
     { "id": "004", "title": "Senior Network Security Engineer", "opened": "2026-05-01", "contact": "Poet / Pargalia", "recruiter": "Andrea Limata", "status": "IN CORSO", "notes": "Candidato: Daniele Ferla (segnalato da Angelo Lauria). Disponibile a ridurre RAL. Inglese appena sufficiente. Preavviso 2 mesi (negoziabile). CV inviato a Poet e Pargalia il 15/06/2026." },
     { "id": "005", "title": "Tirocinanti NOC H24 (3 pos.)", "opened": "2026-05-01", "contact": "Poet / Pargalia", "recruiter": "Andrea/Giuseppina", "status": "IN CORSO", "notes": "1 candidato selezionato (15/06): sistemista L1, superato colloquio HR (Giuseppina) + tecnico (Roberto Pargalia). Disponibile subito, H24. APM Tech attiva tirocinio con CPI Piemonte. Tutor: Manfredi. Claudia Pizzato: ok tirocinio ma no turni fino a fine periodo di valutazione; richiesto CV candidato. Restano 2 posizioni aperte su 3." },
-    { "id": "006", "title": "Cloud DevOps Engineer", "opened": "2026-05-31", "contact": "Villani", "recruiter": "Andrea Limata", "status": "BLOCKED" },
+    { "id": "006", "title": "Cloud DevOps Engineer", "opened": "2026-05-31", "contact": "Villani", "recruiter": "Andrea Limata", "status": "BLOCKED", "notes": "Candidata presentata il 18/06: Martina Nanu (Technical Lead, AWS Security cert in corso, Kubernetes/GCP in formazione, inglese buono, reperibilità ok, preavviso 1 mese). CV inviato da Andrea Limata a Giulio Villani (NPO) — Villani ha risposto positivamente. In attesa feedback definitivo. Difficoltà strutturale: profili senior hanno RAL superiore all'offerta." },
     { "id": "007", "title": "Sistemista Categorie Protette", "opened": "2026-05-19", "contact": "Luciana Nadejde", "recruiter": "Giuseppina Monda", "status": "COLLOQUIO TECNICO", "notes": "Candidato colloquiato da Giuseppina (17/06), superato colloquio HR. Colloquio tecnico con Pargalia da fissare — se positivo, posizione chiusa." },
     { "id": "008", "title": "Junior IT Service Desk H24 (2 posizioni)", "opened": "2026-06-05", "contact": "Francesco Mastroieni", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "1/2 candidati trovati (17/06). Seconda figura identica ancora ricercata. RAL: 23-25K" },
     { "id": "009", "title": "Addetto/a Contabilità/Amm.", "opened": "2026-06-05", "contact": "Veronica Vinassa", "recruiter": "Giuseppina Monda", "status": "APERTA" },
     { "id": "010", "title": "H24 Reale Mutua (Voccola)", "opened": "2026-05-26", "contact": "Luciano Voccola", "recruiter": "Giuseppina Monda", "status": "CONVERTED" },
     { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA" },
     { "id": "012", "title": "Data Analyst", "opened": "2026-06-17", "contact": "Annalisa Mele", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato colloquiato da Giuseppina il 16/06. In attesa feedback." },
-    { "id": "013", "title": "Cloud Engineer esperto in Dynatrace", "opened": "2026-06-18", "contact": "Daniele Genovese (NPO) / OverIT", "recruiter": "Andrea Limata", "status": "APERTA", "notes": "URGENTE. Cliente finale: OverIT (via Ricoh/Npo Sistemi). Richiesta inoltrata da Genovese (NPO) a selezione@criticalservice.it; Luigi delega ad Andrea Limata. Lavoro da remoto, 1 FTE, durata 3-4 mesi, inizio entro giugno. Andrea ha già contattato Agap2 (Damiano Bogni) per candidati." }
+    { "id": "013", "title": "Cloud Engineer esperto in Dynatrace", "opened": "2026-06-18", "contact": "Daniele Genovese (NPO) / OverIT", "recruiter": "Andrea Limata", "status": "IN CORSO", "notes": "URGENTE. Cliente finale: OverIT (via Ricoh/Npo Sistemi). Remoto, 3-4 mesi, inizio entro giugno. Primo CV ricevuto da AGAP2 (18/06): 'Daniele', 6+ anni esperienza Dynatrace/observability, AWS/Azure/GCP, Kubernetes/OpenShift, Terraform. NPO (Genovese) propone Pastore come intervistatore tecnico — approvazione finale di Raffaele Chiatto. In attesa di organizzare colloquio tecnico." }
   ],
   "events": [
     { "Data": "07/04/2026", "IDRicerca": "001", "Ricerca": "4 Junior SOC NOC Analyst H24", "Evento": "Apertura ricerca" },
@@ -38,6 +38,8 @@
     { "Data": "16/06/2026", "IDRicerca": "005", "Ricerca": "Tirocinanti NOC H24 (3 pos.)", "Evento": "Claudia Pizzato (NPO): ok tirocinio, no turni fino a fine valutazione. Richiesto CV candidato a Giuseppina. Restano 2 posizioni aperte." },
     { "Data": "17/06/2026", "IDRicerca": "008", "Ricerca": "Junior IT Service Desk H24", "Evento": "Candidato trovato da Giuseppina Monda" },
     { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "Apertura ricerca URGENTE. OverIT (via Ricoh/NPO) richiede Cloud Engineer Dynatrace, remoto, 3-4 mesi. Genovese (NPO) invia a selezione@criticalservice.it; Luigi delega ad Andrea Limata." },
-    { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "Andrea Limata contatta Agap2 (Damiano Bogni) con brief completo. In attesa proposta candidati." }
+    { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "Andrea Limata contatta Agap2 (Damiano Bogni) con brief completo. In attesa proposta candidati." },
+    { "Data": "18/06/2026", "IDRicerca": "006", "Ricerca": "Cloud DevOps Engineer", "Evento": "Candidata presentata da Andrea Limata a Giulio Villani (NPO): Martina Nanu — Technical Lead, AWS cert in corso, inglese buono, reperibilità ok. Villani risponde positivamente. In attesa feedback. Nota recruiter: difficoltà RAL per profili senior." },
+    { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "AGAP2 presenta primo CV: 'Daniele', 6+ anni Dynatrace/observability. NPO (Genovese) propone Pastore come intervistatore tecnico, approvazione Raffaele Chiatto. Colloquio tecnico da organizzare." }
   ]
 }
