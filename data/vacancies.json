@@ -1,5 +1,6 @@
 ﻿{
   "updated": "2026-06-11T00:00:00Z",
+  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e"],
   "vacancies": [
     { "id": "001", "title": "4 Junior SOC NOC Analyst H24", "opened": "2026-04-07", "contact": "Ricotti / Pargalia", "recruiter": "Andrea Limata", "status": "CHIUSA" },
     { "id": "002", "title": "SQL Server Administrator Senior", "opened": "2026-05-18", "contact": "Genovese / Marcaccini", "recruiter": "Andrea Limata", "status": "CHIUSA" },
