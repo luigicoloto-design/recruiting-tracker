@@ -1,6 +1,6 @@
 ﻿{
-  "updated": "2026-06-11T00:00:00Z",
-  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e"],
+  "updated": "2026-06-18T08:30:00Z",
+  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e", "19ed989c78244730", "19ed9cd5da9a6094"],
   "vacancies": [
     { "id": "001", "title": "4 Junior SOC NOC Analyst H24", "opened": "2026-04-07", "contact": "Ricotti / Pargalia", "recruiter": "Andrea Limata", "status": "CHIUSA" },
     { "id": "002", "title": "SQL Server Administrator Senior", "opened": "2026-05-18", "contact": "Genovese / Marcaccini", "recruiter": "Andrea Limata", "status": "CHIUSA" },
@@ -13,7 +13,8 @@
     { "id": "009", "title": "Addetto/a Contabilità/Amm.", "opened": "2026-06-05", "contact": "Veronica Vinassa", "recruiter": "Giuseppina Monda", "status": "APERTA" },
     { "id": "010", "title": "H24 Reale Mutua (Voccola)", "opened": "2026-05-26", "contact": "Luciano Voccola", "recruiter": "Giuseppina Monda", "status": "CONVERTED" },
     { "id": "011", "title": "Sistemista VMware/Linux/Windows", "opened": "2026-06-10", "contact": "Daniele Genovese", "recruiter": "Andrea Limata", "status": "APERTA" },
-    { "id": "012", "title": "Data Analyst", "opened": "2026-06-17", "contact": "Annalisa Mele", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato colloquiato da Giuseppina il 16/06. In attesa feedback." }
+    { "id": "012", "title": "Data Analyst", "opened": "2026-06-17", "contact": "Annalisa Mele", "recruiter": "Giuseppina Monda", "status": "IN CORSO", "notes": "Candidato colloquiato da Giuseppina il 16/06. In attesa feedback." },
+    { "id": "013", "title": "Cloud Engineer esperto in Dynatrace", "opened": "2026-06-18", "contact": "Daniele Genovese (NPO) / OverIT", "recruiter": "Andrea Limata", "status": "APERTA", "notes": "URGENTE. Cliente finale: OverIT (via Ricoh/Npo Sistemi). Richiesta inoltrata da Genovese (NPO) a selezione@criticalservice.it; Luigi delega ad Andrea Limata. Lavoro da remoto, 1 FTE, durata 3-4 mesi, inizio entro giugno. Andrea ha già contattato Agap2 (Damiano Bogni) per candidati." }
   ],
   "events": [
     { "Data": "07/04/2026", "IDRicerca": "001", "Ricerca": "4 Junior SOC NOC Analyst H24", "Evento": "Apertura ricerca" },
@@ -35,6 +36,8 @@
     { "Data": "17/06/2026", "IDRicerca": "012", "Ricerca": "Data Analyst", "Evento": "Apertura ricerca. Colloquio HR svolto da Giuseppina con candidato" },
     { "Data": "15/06/2026", "IDRicerca": "005", "Ricerca": "Tirocinanti NOC H24 (3 pos.)", "Evento": "1 candidato selezionato: superato colloquio HR (Giuseppina) + tecnico (Pargalia). Tirocinio in attivazione con CPI Piemonte. No turni fino a fine periodo valutazione." },
     { "Data": "16/06/2026", "IDRicerca": "005", "Ricerca": "Tirocinanti NOC H24 (3 pos.)", "Evento": "Claudia Pizzato (NPO): ok tirocinio, no turni fino a fine valutazione. Richiesto CV candidato a Giuseppina. Restano 2 posizioni aperte." },
-    { "Data": "17/06/2026", "IDRicerca": "008", "Ricerca": "Junior IT Service Desk H24", "Evento": "Candidato trovato da Giuseppina Monda" }
+    { "Data": "17/06/2026", "IDRicerca": "008", "Ricerca": "Junior IT Service Desk H24", "Evento": "Candidato trovato da Giuseppina Monda" },
+    { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "Apertura ricerca URGENTE. OverIT (via Ricoh/NPO) richiede Cloud Engineer Dynatrace, remoto, 3-4 mesi. Genovese (NPO) invia a selezione@criticalservice.it; Luigi delega ad Andrea Limata." },
+    { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "Andrea Limata contatta Agap2 (Damiano Bogni) con brief completo. In attesa proposta candidati." }
   ]
 }
