@@ -82,7 +82,31 @@
   .toast.show { opacity: 1; }
   .toast.success { background: #2E7D32; }
   .toast.error { background: #B71C1C; }
-  @media (max-width: 600px) { .header, .content { padding-left: 16px; padding-right: 16px; } .update-grid { grid-template-columns: 1fr; } }
+  .dz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .dz-card { background: #fff; border-radius: 12px; border: 1px solid #E2E8F0; padding: 18px 20px; border-left: 4px solid var(--c, #1E4DB7); }
+  .dz-value { font-size: 32px; font-weight: 800; color: #0F2044; line-height: 1; }
+  .dz-label { font-size: 12px; color: #64748B; font-weight: 600; margin-top: 6px; }
+  .dz-pct { font-size: 13px; font-weight: 700; color: var(--c, #1E4DB7); margin-top: 4px; }
+  .dz-section { background: #fff; border-radius: 12px; border: 1px solid #E2E8F0; padding: 20px 24px; margin-bottom: 24px; }
+  .dz-section h3 { font-size: 15px; font-weight: 800; color: #0F2044; margin-bottom: 4px; }
+  .dz-section .dz-hint { font-size: 11px; color: #94A3B8; margin-bottom: 18px; }
+  .reason-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .reason-label { font-size: 13px; font-weight: 600; color: #374151; width: 180px; flex-shrink: 0; }
+  .reason-track { flex: 1; background: #F1F5F9; border-radius: 6px; height: 24px; overflow: hidden; }
+  .reason-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; color: #fff; font-size: 11px; font-weight: 700; min-width: 30px; }
+  .reason-pct { font-size: 14px; font-weight: 800; color: #0F2044; width: 86px; text-align: right; flex-shrink: 0; }
+  .funnel-agg { display: flex; gap: 8px; align-items: stretch; }
+  .funnel-step { flex: 1; border-radius: 10px; padding: 16px 8px; text-align: center; color: #fff; position: relative; }
+  .funnel-val { font-size: 30px; font-weight: 900; line-height: 1; }
+  .funnel-slabel { font-size: 11px; font-weight: 700; margin-top: 6px; letter-spacing: 0.5px; }
+  .funnel-conv { font-size: 10px; margin-top: 4px; opacity: 0.85; }
+  .pipe-table { width: 100%; border-collapse: collapse; }
+  .pipe-table th { font-size: 10px; text-transform: uppercase; color: #94A3B8; text-align: center; padding: 8px 6px; font-weight: 700; letter-spacing: 0.5px; }
+  .pipe-table th.l, .pipe-table td.l { text-align: left; }
+  .pipe-table td { padding: 8px 6px; border-top: 1px solid #F1F5F9; font-size: 13px; }
+  .pipe-id { font-size: 10px; font-weight: 800; color: #90CAF9; background: #0F2044; border-radius: 5px; padding: 3px 7px; }
+  .pipe-num { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 7px; font-size: 13px; font-weight: 800; }
+  @media (max-width: 600px) { .header, .content { padding-left: 16px; padding-right: 16px; } .update-grid { grid-template-columns: 1fr; } .reason-label { width: 110px; } .funnel-agg { flex-wrap: wrap; } .funnel-step { flex: 1 1 40%; } }
 </style>
 </head>
 <body>
@@ -103,6 +127,7 @@
   </div>
   <div class="kpi-strip" id="kpiStrip"></div>
   <div class="tabs">
+    <button class="tab" onclick="setTab('direzionale',this)">Riepilogo Direzionale</button>
     <button class="tab active" onclick="setTab('tracker',this)">Vacancy Master</button>
     <button class="tab" onclick="setTab('log',this)">Event Log</button>
     <button class="tab" onclick="setTab('carico',this)">Carico Recruiter</button>
@@ -116,6 +141,7 @@
   <div id="spinner" class="spinner-wrap"><div class="spinner"></div><div class="spinner-text">Caricamento dati...</div></div>
   <div id="errorBox" class="error-box" style="display:none"><strong>Errore:</strong> <span id="errorMsg"></span><br><button class="btn-retry" onclick="fetchData()">Riprova</button></div>
   <div id="mainContent" style="display:none">
+    <div id="tabDirezionale" style="display:none"></div>
     <div id="tabTracker"><div class="filters" id="filters"></div><div class="vacancy-list" id="vacancyList"></div></div>
     <div id="tabLog" style="display:none"><div class="event-table"><div class="event-header" id="eventHeader"></div><div id="eventList"></div></div></div>
     <div id="tabCarico" style="display:none"><div class="recruiter-grid" id="recruiterGrid"></div></div>
@@ -125,20 +151,52 @@
 <div id="toast" class="toast"></div>
 <script>
 const DATA_JSON="https://raw.githubusercontent.com/luigicoloto-design/recruiting-tracker/main/data/vacancies.json?t=" + Date.now();
-const STATUS_CONFIG={"CHIUSA":{bg:"#E8F5E9",text:"#2E7D32",dot:"#43A047",label:"Chiusa"},"CONVERTED":{bg:"#E8F5E9",text:"#2E7D32",dot:"#66BB6A",label:"Convertita"},"IN CORSO":{bg:"#FFF8E1",text:"#F57F17",dot:"#FFB300",label:"In Corso"},"ACTIVE SOURCING":{bg:"#FFF3E0",text:"#E65100",dot:"#FB8C00",label:"Active Sourcing"},"APERTA":{bg:"#E3F2FD",text:"#1565C0",dot:"#1E88E5",label:"Aperta"},"BLOCKED":{bg:"#FFEBEE",text:"#B71C1C",dot:"#E53935",label:"Bloccata"}};
+const STATUS_CONFIG={"CHIUSA":{bg:"#E8F5E9",text:"#2E7D32",dot:"#43A047",label:"Chiusa"},"CONVERTED":{bg:"#E8F5E9",text:"#2E7D32",dot:"#66BB6A",label:"Convertita"},"IN CORSO":{bg:"#FFF8E1",text:"#F57F17",dot:"#FFB300",label:"In Corso"},"ACTIVE SOURCING":{bg:"#FFF3E0",text:"#E65100",dot:"#FB8C00",label:"Active Sourcing"},"APERTA":{bg:"#E3F2FD",text:"#1565C0",dot:"#1E88E5",label:"Aperta"},"COLLOQUIO TECNICO":{bg:"#EDE7F6",text:"#5E35B1",dot:"#7E57C2",label:"Colloquio Tecnico"},"BLOCKED":{bg:"#FFEBEE",text:"#B71C1C",dot:"#E53935",label:"Bloccata"}};
 const RECRUITER_COLORS={"Andrea Limata":"#1A3A6B","Giuseppina Monda":"#6A1B9A","Andrea / Giuseppina":"#00695C","Andrea/Giuseppina":"#00695C"};
 let vacancies=[],events=[],activeFilter="TUTTI",openCard=null;
-function normalizeVacancy(v){return{ID:v.id,Ricerca:v.title,DataApertura:v.opened,Referente:v.contact,Recruiter:v.recruiter,Stato:v.status,Note:v.notes||""};}
+function normalizeVacancy(v){return{ID:v.id,Ricerca:v.title,DataApertura:v.opened,Referente:v.contact,Recruiter:v.recruiter,Stato:v.status,Note:v.notes||"",Pipeline:v.pipeline||{application:0,screening:0,interview:0,hired:0},Motivo:v.closureReason||""};}
+const FUNNEL_STAGES=[{key:"application",label:"Application",color:"#5C9CE6"},{key:"screening",label:"Screening",color:"#3B7DD8"},{key:"interview",label:"Interview",color:"#2456B8"},{key:"hired",label:"Hired",color:"#1B5E20"}];
+const CLOSURE_COLORS={"Posizione coperta":"#2E7D32","Mobilità interna":"#1565C0","Convertita":"#6A1B9A","Annullata":"#B71C1C","Bloccata cliente":"#E65100","Non specificata":"#94A3B8"};
+const ACTIVE_STATI=["APERTA","IN CORSO","ACTIVE SOURCING","COLLOQUIO TECNICO"];
 async function fetchData(){document.getElementById("spinner").style.display="flex";document.getElementById("errorBox").style.display="none";document.getElementById("mainContent").style.display="none";document.getElementById("lastUpdate").textContent="Caricamento...";try{const res=await fetch(DATA_JSON);if(!res.ok)throw new Error("Errore caricamento dati (HTTP "+res.status+")");const data=await res.json();vacancies=(data.vacancies||[]).map(normalizeVacancy);events=data.events||[];document.getElementById("lastUpdate").textContent=`Aggiornato alle ${new Date().toLocaleTimeString("it-IT")}`;renderAll();document.getElementById("spinner").style.display="none";document.getElementById("mainContent").style.display="block";}catch(e){document.getElementById("spinner").style.display="none";document.getElementById("errorMsg").textContent=e.message;document.getElementById("errorBox").style.display="block";}}
-function renderAll(){renderKPI();renderFilters();renderVacancies();renderEvents();renderRecruiter();}
-function renderKPI(){const total=vacancies.length,active=vacancies.filter(v=>["APERTA","IN CORSO","ACTIVE SOURCING"].includes(v.Stato)).length,closed=vacancies.filter(v=>["CHIUSA","CONVERTED"].includes(v.Stato)).length,blocked=vacancies.filter(v=>v.Stato==="BLOCKED").length;document.getElementById("kpiStrip").innerHTML=[{label:"Vacancy Monitorate",value:total,color:"#1565C0",sub:"totali"},{label:"Posizioni Aperte",value:active,color:"#E65100",sub:"attive"},{label:"Chiuse / Conv.",value:closed,color:"#2E7D32",sub:"completate"},{label:"Bloccate",value:blocked,color:"#B71C1C",sub:"in attesa"}].map(k=>`<div class="kpi-card" style="--color:${k.color}"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div><div class="kpi-sub">${k.sub}</div></div>`).join("");}
+function renderAll(){renderKPI();renderDirezionale();renderFilters();renderVacancies();renderEvents();renderRecruiter();}
+function renderDirezionale(){
+  const total=vacancies.length;
+  const active=vacancies.filter(v=>ACTIVE_STATI.includes(v.Stato));
+  const exited=vacancies.filter(v=>["CHIUSA","CONVERTED"].includes(v.Stato));
+  const pct=n=>total?Math.round(n/total*100):0;
+  const firstOpen=vacancies.map(v=>v.DataApertura).filter(Boolean).sort()[0]||"2026-04-07";
+  // Summary cards
+  const cards=[
+    {v:total,l:"Ricerche totali",p:`dal ${firstOpen.split("-").reverse().join("/")}`,c:"#1E4DB7"},
+    {v:active.length,l:"In corso / aperte",p:pct(active.length)+"%",c:"#E65100"},
+    {v:exited.length,l:"Chiuse / uscite",p:pct(exited.length)+"%",c:"#2E7D32"}
+  ];
+  const cardsHTML=`<div class="dz-grid">${cards.map(k=>`<div class="dz-card" style="--c:${k.c}"><div class="dz-value">${k.v}</div><div class="dz-label">${k.l}</div><div class="dz-pct">${k.p}</div></div>`).join("")}</div>`;
+  // Closure reasons
+  const reasons={};
+  exited.forEach(v=>{const r=v.Motivo||"Non specificata";reasons[r]=(reasons[r]||0)+1;});
+  const reasonEntries=Object.entries(reasons).sort((a,b)=>b[1]-a[1]);
+  const totExit=exited.length||1;
+  const reasonHTML=`<div class="dz-section"><h3>Motivazione di chiusura</h3><div class="dz-hint">${exited.length} ricerche uscite dal funnel attivo</div>${reasonEntries.length?reasonEntries.map(([r,n])=>{const p=Math.round(n/totExit*100),col=CLOSURE_COLORS[r]||"#94A3B8";return `<div class="reason-row"><div class="reason-label">${r}</div><div class="reason-track"><div class="reason-fill" style="width:${Math.max(p,8)}%;background:${col}">${n}</div></div><div class="reason-pct">${p}%</div></div>`;}).join(""):`<div class="dz-hint">Nessuna ricerca chiusa al momento.</div>`}</div>`;
+  // Aggregate funnel
+  const agg={application:0,screening:0,interview:0,hired:0};
+  vacancies.forEach(v=>FUNNEL_STAGES.forEach(s=>agg[s.key]+=(v.Pipeline[s.key]||0)));
+  const funnelHTML=`<div class="dz-section"><h3>Pipeline candidati — totale aggregato</h3><div class="dz-hint">Somma dei candidati per stadio su tutte le ricerche · si popola automaticamente dalle email</div><div class="funnel-agg">${FUNNEL_STAGES.map((s,i)=>{const val=agg[s.key],prev=i>0?agg[FUNNEL_STAGES[i-1].key]:null,conv=prev&&prev>0?Math.round(val/prev*100)+"% ↓":(i===0?"&nbsp;":"—");return `<div class="funnel-step" style="background:${s.color}"><div class="funnel-val">${val}</div><div class="funnel-slabel">${s.label}</div><div class="funnel-conv">${conv}</div></div>`;}).join("")}</div></div>`;
+  // Per-search funnel table
+  const order=[...vacancies].sort((a,b)=>{const aa=ACTIVE_STATI.includes(a.Stato)?0:1,bb=ACTIVE_STATI.includes(b.Stato)?0:1;return aa-bb||a.ID.localeCompare(b.ID);});
+  const cellColor=(key,val)=>val===0?"background:#F1F5F9;color:#CBD5E0":key==="hired"?"background:#E8F5E9;color:#2E7D32":"background:#E3F2FD;color:#1565C0";
+  const tableHTML=`<div class="dz-section"><h3>Pipeline per ricerca</h3><div class="dz-hint">Candidati nei vari stadi, ricerca per ricerca</div><table class="pipe-table"><thead><tr><th class="l">Ricerca</th><th>Stato</th>${FUNNEL_STAGES.map(s=>`<th>${s.label}</th>`).join("")}</tr></thead><tbody>${order.map(v=>`<tr><td class="l"><span class="pipe-id">${v.ID}</span> ${v.Ricerca}</td><td style="text-align:center">${statusBadge(v.Stato)}</td>${FUNNEL_STAGES.map(s=>{const val=v.Pipeline[s.key]||0;return `<td class="pipe-cell"><span class="pipe-num" style="${cellColor(s.key,val)}">${val}</span></td>`;}).join("")}</tr>`).join("")}</tbody></table></div>`;
+  document.getElementById("tabDirezionale").innerHTML=cardsHTML+reasonHTML+funnelHTML+tableHTML;
+}
+function renderKPI(){const total=vacancies.length,active=vacancies.filter(v=>ACTIVE_STATI.includes(v.Stato)).length,closed=vacancies.filter(v=>["CHIUSA","CONVERTED"].includes(v.Stato)).length,hired=vacancies.reduce((s,v)=>s+(v.Pipeline.hired||0),0);document.getElementById("kpiStrip").innerHTML=[{label:"Vacancy Monitorate",value:total,color:"#1565C0",sub:"totali"},{label:"Posizioni Aperte",value:active,color:"#E65100",sub:"attive"},{label:"Chiuse / Conv.",value:closed,color:"#2E7D32",sub:"completate"},{label:"Assunti / Tirocini",value:hired,color:"#7E57C2",sub:"inseriti"}].map(k=>`<div class="kpi-card" style="--color:${k.color}"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div><div class="kpi-sub">${k.sub}</div></div>`).join("");}
 function statusBadge(s){const c=STATUS_CONFIG[s]||{bg:"#F5F5F5",text:"#555",dot:"#999",label:s};return `<span class="status-badge" style="background:${c.bg};color:${c.text}"><span class="status-dot" style="background:${c.dot}"></span>${c.label}</span>`;}
 function recruiterTag(name){const color=RECRUITER_COLORS[name]||"#546E7A";return `<span class="rec-tag" style="background:${color}18;color:${color};border:1px solid ${color}40">${name}</span>`;}
 function renderFilters(){document.getElementById("filters").innerHTML=["TUTTI",...Object.keys(STATUS_CONFIG)].map(s=>{const cfg=STATUS_CONFIG[s],count=s==="TUTTI"?vacancies.length:vacancies.filter(v=>v.Stato===s).length;if(s!=="TUTTI"&&count===0)return"";const isActive=activeFilter===s;return `<button class="filter-btn" style="background:${isActive?(cfg?cfg.bg:"#E3E8EF"):"#fff"};color:${isActive?(cfg?cfg.text:"#1A202C"):"#64748B"};border-color:${isActive?(cfg?cfg.dot:"#CBD5E0"):"#E2E8F0"};font-weight:${isActive?700:500}" onclick="setFilter('${s}')">${s==="TUTTI"?`Tutti (${count})`:`${cfg?.label||s} (${count})`}</button>`;}).join("");}
 function renderVacancies(){document.getElementById("vacancyList").innerHTML=(activeFilter==="TUTTI"?vacancies:vacancies.filter(v=>v.Stato===activeFilter)).map(v=>{const isOpen=openCard===v.ID,cfg=STATUS_CONFIG[v.Stato]||{};return `<div class="vacancy-card" style="${isOpen?`border-color:${cfg.dot||"#CBD5E0"};box-shadow:0 0 0 3px ${(cfg.dot||"#000")}22`:""}" onclick="toggleCard('${v.ID}')"><div class="card-row"><div class="card-id">${v.ID}</div><div class="card-body"><div class="card-title">${v.Ricerca}</div><div class="card-meta">${recruiterTag(v.Recruiter)}<span class="meta-text">Ref: ${v.Referente}</span><span class="meta-text">Dal ${v.DataApertura}</span></div></div>${statusBadge(v.Stato)}</div>${isOpen&&v.Note?`<div class="card-note"><strong>Note:</strong> ${v.Note}</div>`:""}</div>`;}).join("");}
 function renderEvents(){document.getElementById("eventHeader").textContent=`Timeline eventi — ${events.length} eventi registrati`;document.getElementById("eventList").innerHTML=[...events].reverse().map((e,i)=>`<div class="event-row" style="${i%2===0?"background:#FAFBFF":""}"><div class="event-date">${e.Data}</div><div class="event-id">${e.IDRicerca}</div><div class="event-body"><div class="event-title">${e.Evento}</div><div class="event-sub">${e.Ricerca}</div></div></div>`).join("");}
 function renderRecruiter(){document.getElementById("recruiterGrid").innerHTML=["Andrea Limata","Giuseppina Monda"].map(recruiter=>{const mine=vacancies.filter(v=>v.Recruiter&&v.Recruiter.includes(recruiter.split(" ")[0]));const color=RECRUITER_COLORS[recruiter]||"#546E7A";const byStatus=Object.keys(STATUS_CONFIG).map(s=>({s,count:mine.filter(v=>v.Stato===s).length})).filter(x=>x.count>0);return `<div class="rec-card"><div class="rec-card-header" style="background:${color}"><div><div class="rec-card-role">RECRUITER</div><div class="rec-card-name">${recruiter}</div></div><div class="rec-card-count">${mine.length}</div></div>${byStatus.map(({s,count})=>`<div class="rec-status-row">${statusBadge(s)}<strong style="font-size:15px">${count}</strong></div>`).join("")}<div class="rec-footer"><div class="rec-footer-label">RICERCHE ATTIVE</div>${mine.filter(v=>!["CHIUSA","CONVERTED"].includes(v.Stato)).map(v=>`<div class="rec-vacancy-row"><span class="rec-vacancy-id" style="color:${color}">${v.ID}</span><span class="rec-vacancy-title">${v.Ricerca}</span>${statusBadge(v.Stato)}</div>`).join("")}</div></div>`;}).join("");}
-function setTab(tab,el){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));el.classList.add("active");document.getElementById("tabTracker").style.display=tab==="tracker"?"block":"none";document.getElementById("tabLog").style.display=tab==="log"?"block":"none";document.getElementById("tabCarico").style.display=tab==="carico"?"block":"none";}
+function setTab(tab,el){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));el.classList.add("active");document.getElementById("tabDirezionale").style.display=tab==="direzionale"?"block":"none";document.getElementById("tabTracker").style.display=tab==="tracker"?"block":"none";document.getElementById("tabLog").style.display=tab==="log"?"block":"none";document.getElementById("tabCarico").style.display=tab==="carico"?"block":"none";}
 function setFilter(f){activeFilter=f;renderFilters();renderVacancies();}
 function toggleCard(id){openCard=openCard===id?null:id;renderVacancies();}
 fetchData();
