@@ -1,6 +1,6 @@
 ﻿{
-  "updated": "2026-06-18T16:00:00Z",
-  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e", "19ed989c78244730", "19ed9cd5da9a6094", "19eda564de18f06e", "19eda55751a10498", "19edac397dd87be8", "19edb266d2f7f016"],
+  "updated": "2026-06-22T08:30:00Z",
+  "processedThreads": ["19ecbbf78e0350f1", "19ecc0837978b12e", "19ed989c78244730", "19ed9cd5da9a6094", "19eda564de18f06e", "19eda55751a10498", "19edac397dd87be8", "19edb266d2f7f016", "19eee689ff2d715c"],
   "vacancies": [
     { "id": "001", "title": "4 Junior SOC NOC Analyst H24", "opened": "2026-04-07", "contact": "Ricotti / Pargalia", "recruiter": "Andrea Limata", "status": "CHIUSA" },
     { "id": "002", "title": "SQL Server Administrator Senior", "opened": "2026-05-18", "contact": "Genovese / Marcaccini", "recruiter": "Andrea Limata", "status": "CHIUSA" },
@@ -42,6 +42,7 @@
     { "Data": "18/06/2026", "IDRicerca": "006", "Ricerca": "Cloud DevOps Engineer", "Evento": "Candidata presentata da Andrea Limata a Giulio Villani (NPO): Martina Nanu — Technical Lead, AWS cert in corso, inglese buono, reperibilità ok. Villani risponde positivamente. In attesa feedback. Nota recruiter: difficoltà RAL per profili senior." },
     { "Data": "18/06/2026", "IDRicerca": "013", "Ricerca": "Cloud Engineer esperto in Dynatrace", "Evento": "AGAP2 presenta primo CV: 'Daniele', 6+ anni Dynatrace/observability. NPO (Genovese) propone Pastore come intervistatore tecnico, approvazione Raffaele Chiatto. Colloquio tecnico da organizzare." },
     { "Data": "18/06/2026", "IDRicerca": "006", "Ricerca": "Cloud DevOps Engineer", "Evento": "Villani (NPO) conferma: 'Organizziamo pure un colloquio tecnico' per Martina Nanu. Coordinamento disponibilità in corso — 24/06 chiusura aziendale. Villani avvisa: prossimo alla paternità, possibile rinvio colloquio." },
-    { "Data": "18/06/2026", "IDRicerca": "011", "Ricerca": "Sistemista VMware/Linux/Windows", "Evento": "Contesto ricerca: sostituzione Valter Dal Bo (pensione imminente). Doppio approccio: esterno (Andrea Limata) + interno (Claudia Pizzato/Veronica Vinassa). Andrea chiede a Luigi se dare priorità al job posting interno. Referente tecnico colloqui: Tascarella (da confermare)." }
+    { "Data": "18/06/2026", "IDRicerca": "011", "Ricerca": "Sistemista VMware/Linux/Windows", "Evento": "Contesto ricerca: sostituzione Valter Dal Bo (pensione imminente). Doppio approccio: esterno (Andrea Limata) + interno (Claudia Pizzato/Veronica Vinassa). Andrea chiede a Luigi se dare priorità al job posting interno. Referente tecnico colloqui: Tascarella (da confermare)." },
+    { "Data": "22/06/2026", "IDRicerca": "011", "Ricerca": "Sistemista VMware/Linux/Windows", "Evento": "Andrea Limata (22/06) conferma: la ricerca per sostituzione Dal Bo riguarda profilo Windows server / Linux / VMware." }
   ]
 }
